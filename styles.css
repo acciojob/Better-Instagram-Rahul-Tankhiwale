@@ -1,63 +1,61 @@
-#div1 {
-  background-image: url("https://picsum.photos/id/237/200/300");
-  height: 300px;
-  width: 200px;
-  margin: 20px;
-}
+/* Basic layout */
+* { box-sizing: border-box; }
+body { font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 20px; background:#fafafa; }
 
-#div2 {
-  background-image: url("https://picsum.photos/seed/picsum/200/300");
-  height: 300px;
-  width: 200px;
-  margin: 20px;
-}
-
-#div3 {
-  background-image: url("https://picsum.photos/200/300?grayscale");
-  height: 300px;
-  width: 200px;
-  margin: 20px;
-}
-
-#div4 {
-  background-image: url("https://picsum.photos/200/300/");
-  height: 300px;
-  width: 200px;
-  margin: 20px;
-}
-
-#div5 {
-  background-image: url("https://picsum.photos/200/300.jpg");
-  height: 300px;
-  width: 200px;
-  margin: 20px;
-}
-
-#div6 {
-  background-image: url("https://picsum.photos/id/102/200/300");
-  height: 300px;
-  width: 200px;
-  margin: 20px;
-}
-
-div.container {
-  border: 5px solid #555;
-}
-
-.flex {
+/* Container styling */
+.container { 
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px;
 }
 
-.selected {
-  border: 5px solid rgb(0, 195, 255);
+/* Each image tile */
+.image {
+  height: 200px;
+  width: 200px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  border-radius: 8px;
+  cursor: grab;
+  user-select: none;
+  padding: 8px;
+  transition: transform 160ms ease, box-shadow 160ms ease, opacity 120ms ease;
 }
 
-p {
-  text-align: center;
+/* Dragging visual */
+.image.dragging {
+  opacity: 0.6;
+  transform: scale(0.97);
+  cursor: grabbing;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
-button {
-  margin: 20px;
+/* Drop target highlight */
+.image.over {
+  outline: 4px solid rgba(0,195,255,0.7);
+  transform: scale(1.02);
+}
+
+/* sample backgrounds (as required in the prompt) */
+#div1 { background-image: url("https://picsum.photos/id/237/400/400"); }
+#div2 { background-image: url("https://picsum.photos/seed/picsum/400/400"); }
+#div3 { background-image: url("https://picsum.photos/400/400?grayscale"); }
+#div4 { background-image: url("https://picsum.photos/400/400/"); }
+#div5 { background-image: url("https://picsum.photos/400/400.jpg"); }
+#div6 { background-image: url("https://picsum.photos/id/102/400/400"); }
+
+/* responsive */
+@media (max-width: 700px) {
+  .image { height: 140px; width: 140px; }
+  .container { gap: 10px; }
 }
